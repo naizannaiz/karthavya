@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  postgres:
+    container_name: "karthavya"
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: yourpassword
+      POSTGRES_DB: karthavya
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    logging:
+      driver: "none"
+
+volumes:
+  postgres_data:
