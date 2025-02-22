@@ -1,0 +1,433 @@
+.recyclerDashboard {
+    background-color: #f7f7f7;
+    padding-right: 62px;
+    overflow: hidden;
+  }
+  
+  .layout {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .mainContent {
+    flex: 1;
+    margin-left: 20px;
+  }
+
+.recyclerNewListing {
+    background-color: #f7f7f7;
+    padding-right: 80px;
+    overflow: hidden;
+  }
+  @media (width<=991px) {
+    .recyclerNewListing {
+      padding-right: 20px;
+    }
+  }
+  .div {
+    gap: 20px;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .div {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+  }
+  .column {
+    flex-direction: column;
+    align-items: stretch;
+    width: 24%;
+    margin-left: 0;
+    line-height: normal;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .column {
+      width: 100%;
+    }
+  }
+  .div2 {
+    background-color: #eae3cc;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px 58px 739px 24px;
+    font-family:
+      Poppins,
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .div2 {
+      margin-top: 40px;
+      padding-bottom: 100px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  .div3 {
+    white-space: nowrap;
+    align-items: stretch;
+    gap: 10px;
+    margin-left: 15px;
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .div3 {
+      white-space: initial;
+      margin-left: 10px;
+    }
+  }
+  .r {
+    color: #fff;
+    background-color: #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  @media (width<=991px) {
+    .r {
+      white-space: initial;
+    }
+  }
+  .revivo {
+    color: #000;
+  }
+  .menu {
+    color: #000;
+    margin-top: 38px;
+    margin-left: 15px;
+    font-weight: 600;
+  }
+  @media (width<=991px) {
+    .menu {
+      margin-left: 10px;
+    }
+  }
+  .dashboard {
+    color: #000;
+    letter-spacing: 0.5px;
+    align-self: center;
+    margin-top: 44px;
+    line-height: 1;
+  }
+  @media (width<=991px) {
+    .dashboard {
+      margin-top: 40px;
+    }
+  }
+  .activeBackground {
+    color: #000;
+    background-color: #706c61;
+    border-radius: 5px;
+    align-items: stretch;
+    gap: 13px;
+    margin-top: 60px;
+    padding: 9px 35px;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .activeBackground {
+      margin-top: 40px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  .img {
+    aspect-ratio: 0.93;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 3px;
+    flex-shrink: 0;
+    width: 14px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .newListing {
+    flex-basis: auto;
+  }
+  .recycler {
+    color: #000;
+    align-self: center;
+    margin-top: 41px;
+  }
+  @media (width<=991px) {
+    .recycler {
+      margin-top: 40px;
+    }
+  }
+  .column2 {
+    flex-direction: column;
+    align-items: stretch;
+    width: 76%;
+    margin-left: 20px;
+    line-height: normal;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .column2 {
+      width: 100%;
+    }
+  }
+  .div4 {
+    color: #1f384c;
+    letter-spacing: 0.5px;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 20px;
+    font-family:
+      Poppins,
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-weight: 700;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .div4 {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+  .inputSearch {
+    white-space: nowrap;
+    background-color: #f6f6fb;
+    border: 1px solid #656462;
+    border-radius: 5px;
+    width: 625px;
+    max-width: 100%;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  @media (width<=991px) {
+    .inputSearch {
+      white-space: initial;
+      padding-right: 20px;
+    }
+  }
+  .titlePage {
+    margin-top: 47px;
+    font-size: 24px;
+    line-height: 1;
+  }
+  @media (width<=991px) {
+    .titlePage {
+      margin-top: 40px;
+    }
+  }
+  .div5 {
+    color: #605b5b;
+    letter-spacing: 0.16px;
+    background-color: #ebebeb;
+    border-radius: 14px;
+    flex-direction: column;
+    align-self: end;
+    align-items: end;
+    width: 760px;
+    max-width: 100%;
+    margin-top: 127px;
+    padding: 22px 43px 48px;
+    font-size: 16px;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .div5 {
+      margin-top: 40px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  .makeanewListing {
+    color: #000;
+    letter-spacing: 0.2px;
+    align-self: start;
+    font-size: 20px;
+  }
+  .div6 {
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 40px 65px;
+    width: 621px;
+    max-width: 100%;
+    margin-top: 18px;
+    display: flex;
+  }
+  .materialName {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 98px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .div7 {
+    white-space: nowrap;
+    flex: auto;
+    align-items: stretch;
+    gap: 27px;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .div7 {
+      white-space: initial;
+    }
+  }
+  .div8 {
+    flex-grow: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .div9 {
+    background-color: #fff;
+    border-radius: 5px;
+    flex-shrink: 0;
+    width: 401px;
+    max-width: 100%;
+    height: 29px;
+    display: flex;
+  }
+  .div10 {
+    white-space: nowrap;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    width: 621px;
+    max-width: 100%;
+    margin-top: 11px;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .div10 {
+      white-space: initial;
+    }
+  }
+  .quantity {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .div11 {
+    align-items: stretch;
+    gap: 27px;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .div11 {
+      white-space: initial;
+    }
+  }
+  .div12 {
+    flex-grow: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .div13 {
+    background-color: #fff;
+    border-radius: 5px;
+    flex-shrink: 0;
+    width: 401px;
+    max-width: 100%;
+    height: 29px;
+    display: flex;
+  }
+  .div14 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    width: 621px;
+    max-width: 100%;
+    margin-top: 12px;
+    display: flex;
+  }
+  .basePrice {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .div15 {
+    white-space: nowrap;
+    align-items: stretch;
+    gap: 27px;
+    display: flex;
+  }
+  @media (width<=991px) {
+    .div15 {
+      white-space: initial;
+    }
+  }
+  .div16 {
+    flex-grow: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .div17 {
+    background-color: #fff;
+    border-radius: 5px;
+    flex-shrink: 0;
+    width: 401px;
+    max-width: 100%;
+    height: 29px;
+    display: flex;
+  }
+  .div18 {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 31px;
+    margin-top: 11px;
+    display: flex;
+  }
+  .auctionStartDate,
+  .div19 {
+    align-self: stretch;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .div20 {
+    background-color: #fff;
+    border-radius: 5px;
+    flex-shrink: 0;
+    align-self: stretch;
+    width: 401px;
+    max-width: 100%;
+    height: 29px;
+    display: flex;
+  }
+  .div21 {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 31px;
+    margin-top: 12px;
+    display: flex;
+  }
+  .auctionEndDate,
+  .div22 {
+    align-self: stretch;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .div23 {
+    background-color: #fff;
+    border-radius: 5px;
+    flex-shrink: 0;
+    align-self: stretch;
+    width: 401px;
+    max-width: 100%;
+    height: 29px;
+    display: flex;
+  }
+  

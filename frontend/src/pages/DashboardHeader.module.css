@@ -1,0 +1,90 @@
+.header {
+    color: #000;
+    width: 100%;
+    margin-top: 20px;
+    font-family:
+      Poppins,
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .searchInput {
+    background-color: #f6f6fb;
+    border: 1px solid #656462;
+    border-radius: 5px;
+    width: 625px;
+    max-width: 100%;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  
+  .statsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    width: 371px;
+    max-width: 100%;
+    margin-top: 47px;
+  }
+  
+  .statsCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .pageTitle {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+  }
+  
+  .statLabel {
+    margin-top: 41px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  
+  .statValue {
+    /* border: 1px solid #060606; */
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  .listingCount {
+    /* border: 1px solid #060606; */
+    font-size: 32px;
+    font-weight: 400;
+    margin: 8px 0 0;
+  }
+  
+  @media (width <= 991px) {
+    .header {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  
+    .searchInput {
+      padding-right: 20px;
+    }
+  
+    .statsContainer {
+      margin-top: 40px;
+    }
+  
+    .statLabel {
+      margin-top: 40px;
+    }
+  }
+  

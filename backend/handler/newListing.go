@@ -1,25 +1,52 @@
 package handler
 
 import (
+	"fmt"
 	"karthavya/model"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
+// CreateNewListing handles the POST request to create a new listing
 func Newlisting(c *gin.Context) {
-	listing := model.Listing{}
+	var newListing model.Listing
 
-	err := c.BindJSON(&listing)
+	// Parse JSON request body
+	if err := c.BindJSON(&newListing); err != nil {
+		fmt.Println(err.Error())
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request data"})
+		return
+	}
+
+	// Get user ID from session
+	userID, err := GetUserIDFromSession(c)
 	if err != nil {
-		c.JSON(400, gin.H{"message": err.Error()})
+		fmt.Println(err.Error())
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
 		return
 	}
 
-	if err := Db.Create(&listing).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to submit listing"})
+	// Assign user ID and initialize defaults
+	newListing.UserID = userID
+	newListing.Status = "Pending"
+	newListing.TopBid = 0 // Default top bid is 0
+
+	// Validate auction dates
+	if newListing.AuctionStartDate.After(newListing.AuctionEndDate) {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Auction start date must be before end date"})
 		return
 	}
 
-	c.JSON(200, gin.H{"message": "Success"})
+	// Save to database
+	if err := Db.Create(&newListing).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create listing"})
+		return
+	}
+
+	// Return success response
+	c.JSON(http.StatusCreated, gin.H{
+		"message": "Listing created successfully",
+		"listing": newListing,
+	})
 }

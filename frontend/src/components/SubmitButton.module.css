@@ -1,0 +1,61 @@
+.submitButton {
+    position: relative;
+    min-height: 97px;
+    width: 100%;
+    overflow: hidden;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    padding: 2rem;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    transition: transform 0.2s ease;
+  }
+  
+  .submitButton:hover {
+    transform: translateY(-2px);
+  }
+  
+  .submitButton:active {
+    transform: translateY(1px);
+  }
+  
+  .submitButton:focus {
+    outline: none;
+  }
+  
+  .submitButton:focus-visible {
+    outline: 2px solid rgba(114, 136, 199, 1);
+    outline-offset: 2px;
+  }
+  
+  .buttonBackground {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .buttonText {
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    .submitButton {
+      min-height: 80px;
+      font-size: 1.25rem;
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .submitButton {
+      min-height: 60px;
+      padding: 1rem;
+    }
+  }

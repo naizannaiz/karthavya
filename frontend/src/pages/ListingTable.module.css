@@ -1,0 +1,98 @@
+.tableContainer {
+    background-color: #ebebeb;
+    border-radius: 14px;
+    margin-top: 83px;
+    padding: 17px 24px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .columnGroup {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .tableTitle {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    align-self: stretch;
+  }
+  
+  .columnHeader {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 10px 0 20px;
+  }
+  
+  .cell {
+    margin-top: 32px;
+    font-size: 14px;
+  }
+  
+  .cell:first-of-type {
+    margin-top: 20px;
+  }
+  
+  .divider {
+    background-color: #e1dede;
+    width: 1px;
+    height: 246px;
+    margin-top: 30px;
+  }
+  
+  .status {
+    border-radius: 20px;
+    padding: 5px 8px;
+    margin-top: 17px;
+    font-size: 12px;
+  }
+  
+  .completed {
+    background-color: #1a932e2e;
+  }
+  
+  .ongoing {
+    background-color: #f286282e;
+  }
+  
+  .open {
+    background-color: #1a932e2e;
+  }
+  
+  .viewButton {
+    background-color: #636363;
+    border-radius: 5px;
+    padding: 5px 8px;
+    border: none;
+    color: #010101;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 24px;
+  }
+  
+  .viewButton:first-of-type {
+    margin-top: 66px;
+  }
+  
+  @media (width <= 991px) {
+    .tableContainer {
+      max-width: 100%;
+      margin-top: 40px;
+      padding: 17px 20px;
+    }
+  
+    .viewButton:first-of-type {
+      margin-top: 40px;
+    }
+  }
+  

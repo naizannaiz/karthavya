@@ -53,5 +53,5 @@ func LoginUser(c *gin.Context) {
 	c.SetCookie("session_token", sessionToken, int(sessionTTL.Seconds()), "/", "", false, false)
 	c.SetCookie("user_name", storedUser.Name, int(sessionTTL.Seconds()), "/", "", false, false)
 
-	c.JSON(http.StatusOK, gin.H{"message": "Login successful", "user": storedUser.Name})
+	c.JSON(http.StatusOK, gin.H{"message": "Login successful", "user": storedUser.Name, "role": storedUser.Role})
 }

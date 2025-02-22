@@ -1,0 +1,106 @@
+.sidebar {
+    background-color: #eae3cc;
+    width: 22%;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: Poppins, -apple-system, Roboto, Helvetica, sans-serif;
+    min-height: 100vh;
+  }
+  
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .logoCircle {
+    color: #ffffff;
+    background-color: #000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  
+  .logoText {
+    color: #000;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .menuTitle {
+    color: #000;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  
+  .menuItem,
+  .activeButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: left;
+    border-radius: 5px;
+  }
+  
+  .menuItem {
+    background: none;
+    color: #000;
+  }
+  
+  .activeButton {
+    background-color: #706c61;
+    color: #fff;
+  }
+  
+  .menuItem:hover {
+    background-color: #d6d0b9;
+    border-radius: 5px;
+  }
+  
+  .menuIcon {
+    width: 16px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 3px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 991px) {
+    .sidebar {
+      width: 100%;
+      padding: 16px;
+      align-items: center;
+    }
+  
+    .logoContainer {
+      justify-content: center;
+    }
+  
+    .menuTitle {
+      text-align: center;
+      width: 100%;
+    }
+  
+    .menuItem,
+    .activeButton {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  

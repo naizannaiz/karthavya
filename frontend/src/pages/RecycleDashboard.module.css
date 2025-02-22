@@ -1,0 +1,33 @@
+.recyclerDashboard {
+    background-color: #f7f7f7;
+    padding-right: 62px;
+    overflow: hidden;
+  }
+  
+  .layout {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .mainContent {
+    flex: 1;
+    margin-left: 20px;
+  }
+  
+  @media (width <= 991px) {
+    .recyclerDashboard {
+      padding-right: 20px;
+    }
+  
+    .layout {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+  
+    .mainContent {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+  

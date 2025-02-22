@@ -12,7 +12,8 @@ func GetAllListingByUserId(c *gin.Context) {
 	// Retrieve session token from the cookie
 	userId, err := GetUserIDFromSession(c)
 	if err != nil {
-		c.JSON(400, gin.H{"message": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
 	}
 
 	// Fetch all listings uploaded by the user
@@ -22,6 +23,23 @@ func GetAllListingByUserId(c *gin.Context) {
 		return
 	}
 
-	// Return the listings
-	c.JSON(http.StatusOK, listings)
+	// Fetch the highest bid for each listing
+	for i, listing := range listings {
+		var topBid int
+		err := Db.Table("bids").
+			Select("COALESCE(MAX(offered_price), 0)").
+			Where("listing_id = ?", listing.ID).
+			Scan(&topBid).Error
+
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch top bid"})
+			return
+		}
+
+		// Assign the top bid to the listing
+		listings[i].TopBid = topBid
+	}
+
+	// Return the listings with top bid data
+	c.JSON(http.StatusOK, gin.H{"listings": listings})
 }

@@ -12,7 +12,7 @@ type User struct {
 	Name     string `json:"username" gorm:"unique;not null"`
 	Email    string `json:"email" gorm:"unique;not null"`
 	Password string `json:"password" gorm:"not null"`
-	Role     string `json:"points"`
+	Role     string `json:"role"`
 }
 type Session struct {
 	ID        uint      `json:"id" gorm:"primaryKey;autoIncrement"`
@@ -23,14 +23,16 @@ type Session struct {
 
 // for recycler to add items for auction
 type Listing struct {
-	ID               string    `json:"id" gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
-	UserID           string    `json:"uid" gorm:"user_id"`
-	RecyclereName    string    `json:"recycler_name"`
+	ID     string `json:"id" gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
+	UserID string `json:"uid" gorm:"user_id"`
+	// RecyclereName    string    `json:"recycler_name"`
 	MaterialName     string    `json:"material"`
 	Quantity         int       `json:"quantity"`
 	BasePrice        int       `json:"base_price"`
 	AuctionStartDate time.Time `json:"auction_start_date"`
+	AuctionEndDate   time.Time `json:"auction_end_date"`
 	Status           string    `json:"status"`
+	TopBid           int       `json:"topBid"`
 }
 
 // the corporate can place bids on the listing
