@@ -28,7 +28,7 @@ export const CorporateDashboard = () => {
         // Calculate total quantity & participated auctions
         const totalQty = ud?.reduce((sum, bid) => sum + (bid.quantity || 0), 0) || 0;
         setTotalQuantity(totalQty);
-        setTotalParticipated(data?.length || 0);
+        setTotalParticipated(ud?.length || 0);
       } catch (error) {
         console.error("Error fetching bids:", error);
       }

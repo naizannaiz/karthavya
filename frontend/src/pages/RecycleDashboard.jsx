@@ -45,7 +45,7 @@ export const RecyclerDashboard = () => {
           <DashboardHeader
             listingCount={listings.length}
             totalTopBid={totalTopBid}
-            totalQuantity={totalQuantity}
+            // totalQuantity={totalQuantity}
             role={role}
           />
           <ListingTable listings={listings} />
