@@ -13,12 +13,19 @@ type User struct {
 	Email    string `json:"email" gorm:"unique;not null"`
 	Password string `json:"password" gorm:"not null"`
 	Role     string `json:"role"`
+	Credit   int    `json:"credit"`
 }
 type Session struct {
 	ID        uint      `json:"id" gorm:"primaryKey;autoIncrement"`
 	Token     string    `json:"token" gorm:"uniqueIndex;not null"`
 	UserID    string    `json:"user_id" gorm:"not null"`
 	ExpiresAt time.Time `json:"expires_at" gorm:"not null"`
+}
+type Credits struct {
+	ID               string `json:"id" gorm:"primaryKey;type:uuid;default:gen_random_uuid()"`
+	UserID           string `json:"user_id" gorm:"not null"`
+	AvailableToSell  int    `json:"available_to_sell"`
+	RecyclerUsername string `json:"recycler_username" gorm:"-"` // GORM will ignore this field
 }
 
 // for recycler to add items for auction
@@ -48,5 +55,5 @@ type Bids struct {
 
 func Migrate(db *gorm.DB) {
 	fmt.Println("generating sql")
-	db.AutoMigrate(&User{}, &Session{}, &Listing{}, &Bids{})
+	db.AutoMigrate(&User{}, &Session{}, &Listing{}, &Bids{}, &Credits{})
 }

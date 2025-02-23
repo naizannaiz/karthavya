@@ -9,6 +9,7 @@ export const CorporateDashboard = () => {
   const [bids, setBids] = useState([]);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalParticipated, setTotalParticipated] = useState(0);
+   const [userCredit, setUserCredit] = useState(0);
 
   useEffect(() => {
     const fetchBids = async () => {
@@ -34,7 +35,25 @@ export const CorporateDashboard = () => {
       }
     };
 
+    const fetchUserCredit = async () => {
+      try {
+        const response = await fetch(`http://localhost:6969/user/0`, {
+          credentials: "include",
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const userData = await response.json();
+        const ud = userData.data
+        console.log("Carbon Credit:",ud.credit );
+        setUserCredit(ud.credit || 0);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
     fetchBids();
+    fetchUserCredit()
   }, []);
 
   return (
@@ -47,7 +66,7 @@ export const CorporateDashboard = () => {
         <main className={styles.column2}>
           <div className={styles.div5}>
             {/* Dashboard Stats */}
-            <DashboardHeader totalQuantity={totalQuantity} totalParticipated={totalParticipated} role="corporate" />
+            <DashboardHeader totalQuantity={totalQuantity} totalParticipated={totalParticipated} role="corporate" credits={userCredit}/>
 
             {/* Auctions Table */}
             <BidTable bids={bids} />

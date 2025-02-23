@@ -10,6 +10,8 @@ export const RecyclerDashboard = () => {
   const [listings, setListings] = useState([]);
   const [role, setRole] = useState("recycler"); // Assuming role is "recycler" for this dashboard
   const [totalQuantity, setTotalQuantity] = useState(0);
+  const [userCredit, setUserCredit] = useState(0);
+  const userId = "user123"; // Replace this with actual user ID fetching logic
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -31,7 +33,25 @@ export const RecyclerDashboard = () => {
       }
     };
 
+    const fetchUserCredit = async () => {
+      try {
+        const response = await fetch(`http://localhost:6969/user/0`, {
+          credentials: "include",
+        });
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const userData = await response.json();
+        const ud = userData.data
+        console.log("Carbon Credit:",ud.credit );
+        setUserCredit(ud.credit || 0);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
     fetchListings();
+    fetchUserCredit();
   }, []);
 
   // Calculate sum of top bids
@@ -46,6 +66,7 @@ export const RecyclerDashboard = () => {
             listingCount={listings.length}
             totalTopBid={totalTopBid}
             // totalQuantity={totalQuantity}
+            credits={userCredit}
             role={role}
           />
           <ListingTable listings={listings} />

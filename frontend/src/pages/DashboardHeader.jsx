@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./DashboardHeader.module.css";
 
-export const DashboardHeader = ({ listingCount, totalTopBid, totalQuantity, totalParticipated, role }) => {
+export const DashboardHeader = ({ listingCount, totalTopBid, totalQuantity, totalParticipated, role,credits }) => {
   return (
     <header className={styles.header}>
       <input type="search" placeholder="Search" className={styles.searchInput} />
@@ -18,6 +18,8 @@ export const DashboardHeader = ({ listingCount, totalTopBid, totalQuantity, tota
 
               <h3 className={styles.statLabel}>Total Listings</h3>
               <p className={styles.listingCount}>{listingCount}</p>
+              <h3 className={styles.statLabel}>Total Carbon credits</h3>
+              <p className={styles.listingCount}>{credits}</p>
             </>
           ) : (
             <>
@@ -26,6 +28,9 @@ export const DashboardHeader = ({ listingCount, totalTopBid, totalQuantity, tota
 
                <h3 className={styles.statLabel}>Total Participated Auctions</h3>
                <p className={styles.listingCount}>{totalParticipated}</p>
+
+               <h3 className={styles.statLabel}>Total Carbon credits Available</h3>
+               <p className={styles.listingCount}>{credits}</p>
 
             </>
           )}

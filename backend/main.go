@@ -3,10 +3,10 @@ package main
 import (
 	"time"
 
+	"karthavya/handler"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"karthavya/handler"
 )
 
 func main() {
@@ -28,26 +28,29 @@ func main() {
 	r.POST("/login", handler.LoginUser)
 
 	//recycler can list new items for auction!!
-	r.POST("/recycler/newlisting",handler.Newlisting)
-	r.GET("/recycler/listings",handler.GetAllListingByUserId)
-	r.GET("/recycler/listing/:id/topbid",handler.GetTopBid)
+	r.POST("/recycler/newlisting", handler.Newlisting)
+	r.GET("/recycler/listings", handler.GetAllListingByUserId)
+	r.GET("/recycler/listing/:id/topbid", handler.GetTopBid)
+	r.POST("/recycler/sellCredits", handler.MakeCreditsAvailableToSell)
 
 	//corporate can place bids on the items on auction!!
-	r.POST("/corporate/newbid",handler.NewBid)
-	r.GET("/corporate/allBids",handler.GetAllBidsByUserId) //@gets all bids placed by the corporate
-
+	r.POST("/corporate/newbid", handler.NewBid)
+	r.GET("/corporate/allBids", handler.GetAllBidsByUserId) //@gets all bids placed by the corporate
 
 	/*
-	-----Public routes-----
+		-----Public routes-----
 	*/
 	//coporate can see all the listing from this
-	r.GET("/listing",handler.GetAllListing)
-	// Find bids for the given listing_id 
-	r.GET("/listing/:id/bids",handler.GetBids)
+	r.GET("/listing", handler.GetAllListing)
+	// Find bids for the given listing_id
+	r.GET("/listing/:id/bids", handler.GetBids)
 
-	r.GET("/listing/:id",handler.GetListing)
+	r.GET("/listing/:id", handler.GetListing)
 
-	r.GET("/user/:id",handler.GetUser)
-	r.GET("/auth/user",handler.GetUserAuth)
+	r.GET("/user/:id", handler.GetUser)
+	r.GET("/auth/user", handler.GetUserAuth)
+	r.GET("/bid/:id", handler.GetBidDetails)
+	r.GET("/creditSellers",handler.GetSellers)
+	r.POST("/buyCredit/:cid",handler.BuyCredit)
 	r.Run(":6969")
 }

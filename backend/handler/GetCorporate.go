@@ -12,6 +12,10 @@ func GetUser(c *gin.Context) {
 	user := model.User{}
 	id := c.Param("id")
 
+	if id == "0" {
+		id,_ = GetUserIDFromSession(c)
+	}
+
 	// Fetch user from DB
 	if err := Db.First(&user, "id = ?", id).Error; err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "User not found"})

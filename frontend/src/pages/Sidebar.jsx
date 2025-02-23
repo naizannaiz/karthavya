@@ -51,7 +51,8 @@ export const Sidebar = () => {
 
       {/* NEW LISTING - Only for Recycler */}
       {userRole === "recycler" && (
-        <button
+        <div>
+            <button
           className={location.pathname === "/recycler/newlisting" ? styles.activeButton : styles.menuItem}
           onClick={() => navigate("/recycler/newlisting")}
         >
@@ -63,16 +64,41 @@ export const Sidebar = () => {
           />
           <span>New Listing</span>
         </button>
+
+        <button
+          className={location.pathname === "/recycler/sellCredits" ? styles.activeButton : styles.menuItem}
+          onClick={() => navigate("/recycler/sellCredits")}
+        >
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/22ac3c6b4bdc2f095d28aefe4d7d3aa9136fc9c444650d33c3f88f4f969c5501"
+            className={styles.menuIcon}
+            alt=""
+          />
+          <span>Sell Carbon Credits</span>
+        </button>
+
+        </div>
+        
       )}
 
       {/* LATEST AUCTION - Only for Corporate */}
       {userRole === "corporate" && (
+        <div>
+
         <button
           className={location.pathname === "/corporate/latest-auction" ? styles.activeButton : styles.menuItem}
           onClick={() => navigate("/corporate/latest-auction")}
         >
           Latest Auction
         </button>
+        <button
+          className={location.pathname === "/corporate/buyCredits" ? styles.activeButton : styles.menuItem}
+          onClick={() => navigate("/corporate/buyCredits")}
+        >
+          Buy Credits
+        </button>
+        </div>
       )}
     </nav>
   );

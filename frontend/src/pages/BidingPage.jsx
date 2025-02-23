@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import styles from "./RecycleNewListing.module.css";
+import styles from "./BidingPage.module.css";
 import { Sidebar } from "./Sidebar";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -11,6 +11,7 @@ export const BidingPage = () => {
     offered_price: "",
     listing_id: id || "",
   });
+  const [listing,setListing] = useState({})
   const [material, setMaterial] = useState("");
   const [geminiResponse, setGeminiResponse] = useState("");
 
@@ -35,12 +36,11 @@ export const BidingPage = () => {
           credentials: "include",
         });
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch bid details");
-        }
+        if (!response.ok) throw new Error("Failed to fetch bid details");
 
         const bidData = await response.json();
         console.log("Bid Details:", bidData.data);
+        setListing(bidData.data)
         setMaterial(bidData.data.material || ""); // Ensures material is set
       } catch (error) {
         console.error("Error fetching bid details:", error);
@@ -52,7 +52,7 @@ export const BidingPage = () => {
     }
   }, [id]);
 
-  // Fetch Market Price from Gemini API
+  // Fetch Market Price from Gemini API (Triggered by AI Button)
   const fetchMarketPrice = async () => {
     if (!material || !formData.offered_price) {
       setGeminiResponse("Please enter a valid amount and ensure the material is available.");
@@ -60,7 +60,7 @@ export const BidingPage = () => {
     }
 
     try {
-      const apiKey = "AIzaSyC_gqs_ZN2F-k3B-8tb0rcTRhcssl7ZLoc"; // Replace with your Gemini API key
+      const apiKey = "AIzaSyC_gqs_ZN2F-k3B-8tb0rcTRhcssl7ZLoc"; // Replace with your API key
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
 
@@ -97,12 +97,38 @@ export const BidingPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!formData.listing_id || formData.offered_price <= 0) {
       alert("Please enter a valid amount.");
       return;
     }
 
-    await fetchMarketPrice();
+    try {
+      const response = await fetch("http://localhost:6969/corporate/newbid", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          listing_id: formData.listing_id,
+          offered_price: formData.offered_price,
+        }),
+      });
+
+      if (!response.ok) throw new Error("Failed to place bid");
+
+      const result = await response.json();
+      console.log("Bid Submitted:", result);
+      alert("Bid placed successfully!");
+
+      // Reset form after successful submission
+      setFormData({ offered_price: "", listing_id: id });
+      setGeminiResponse(""); // Clear AI response
+    } catch (error) {
+      console.error("Error submitting bid:", error);
+      alert("Failed to place bid");
+    }
   };
 
   return (
@@ -110,6 +136,17 @@ export const BidingPage = () => {
       <div className={styles.layout}>
         <Sidebar />
         <main className={styles.mainContent}>
+            <h2 className={styles.titlePage}>Auction Record</h2>
+                        <div className={styles.div6}>
+                          <div className={styles.div7}>
+                            <span className={styles.auctionId}>Auction ID: </span>
+                            <span className={styles.auc123}>{id}</span>
+                          </div>
+                          <div className={styles.div8}>
+                            <span className={styles.material}>Material: </span>
+                            <span className={styles.copperWire}>{listing?.material || "N/A"}</span>
+                          </div>
+                        </div>
           <h2 className={styles.titlePage}>Place Bid</h2>
 
           <form className={styles.div5} onSubmit={handleSubmit}>
@@ -130,11 +167,17 @@ export const BidingPage = () => {
                 />
               </div>
             </div>
-
-            <button type="submit" className={styles.submitButton}>
-              Submit
-            </button>
+            <div className={styles.buttonContainer}>
+                <button type="submit" className={styles.submitButton}>
+                    Submit
+                </button>
+                <button type="button" onClick={fetchMarketPrice} className={styles.submitButton}>
+                    AI Analysis
+                </button>
+            </div>
           </form>
+
+
 
           {geminiResponse && (
             <div className={styles.responseBox}>

@@ -13,6 +13,8 @@ import { RecyclerAuctionRecord } from "./pages/ViewBidsForListing.jsx";
 import { CorporateDashboard } from "./pages/CorporateDashboard.jsx";
 import { LatestAuction } from "./pages/LatestAuction.jsx";
 import { BidingPage } from "./pages/BidingPage.jsx";
+import { SellCarbonCredit } from "./pages/SellCarbonCredits.jsx";
+import { BuyCarbonCredit } from "./pages/BuyCarbonCredit.jsx";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -26,11 +28,13 @@ const App = () => {
         <Route path="/recycler" element={<RecyclerDashboard />} />
         <Route path="/recycler/newlisting" element={<RecyclerNewListing />} />
         <Route path="/recycler/listing/:id" element={<RecyclerAuctionRecord />}/>
+        <Route path="/recycler/sellCredits" element={<SellCarbonCredit />}/>
 
 
         <Route path="/corporate" element={<CorporateDashboard />}/>
         <Route path="/corporate/latest-auction" element={<LatestAuction />}/>
         <Route path="/corporate/bid/:id" element={<BidingPage />}/>
+        <Route path="/corporate/buyCredits" element={<BuyCarbonCredit />}/>
       </Routes>
     </Router>
   );
